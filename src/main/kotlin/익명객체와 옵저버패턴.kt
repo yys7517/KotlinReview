@@ -8,6 +8,7 @@
 // 이벤트 수신(A class)  <-> 이벤트의 발생 및 전달(B class)
 // A class 와 B class 를 연결 시켜주는 'interface' -> 'listener'
 // 이벤트를 전달하는 행위를 'callback' 이라고 한다
+
 fun main() {
     EventPrinter().start()
 }
@@ -27,11 +28,14 @@ class Counter1( var listener : EventListener) {
 
 class EventPrinter {
     fun start() {
+        // object : EventListener 를 상속한 익명 객체를 코드 중간에 선언하여
+        // 추상함수를 재구현한다.
         val counter = Counter1(object : EventListener {
             override fun onEvent(count: Int) {
                 print("${count}-")
             }
         })
+
         counter.count()
     }
 }
