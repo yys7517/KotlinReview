@@ -40,9 +40,21 @@ fun main() {
     }
     println( newList2 ) // [A, !, B, !, C, !]
 
-    val numbers = listOf(-3, 7, 2, -10, 1)
 
     // 10. flatmap
+    val fruitsBag = listOf("apple","orange","banana","grapes")  // 1
+    val clothesBag = listOf("shirts","pants","jeans")           // 2
+    val cart = listOf(fruitsBag, clothesBag)                    // 3
+    val mapBag = cart.map { it }                                // 4
+    val flatMapBag = cart.flatMap { it }                        // 5
+
+    println( "mapBag : $mapBag" )
+    println( "flatMapBag : $flatMapBag" )
+    // 결과
+    // mapBag : [[apple, orange, banana, grapes], [shirts, pants, jeans]]
+    // flatMapBag : [apple, orange, banana, grapes, shirts, pants, jeans]
+
+    val numbers = listOf(-3, 7, 2, -10, 1)
     println( numbers.flatMap { listOf( it * 10 , it + 10 ) })
     // 결과
     // [-30, 7, 70, 17, 20, 12, -100, 0, 10, 11]
